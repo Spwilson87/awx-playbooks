@@ -1,9 +1,5 @@
 ---
-- name: install nano
-  hosts: iomvlpptest01.ipa.sps.local
+- hosts: iomvlpptest01.ipa.sps.local
   become: true 
-  vars:
-    packages:
-      - nano
   roles:
-    - install
+    - nanoinstall
