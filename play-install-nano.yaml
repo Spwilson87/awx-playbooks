@@ -2,8 +2,9 @@
 - name: install nano
   hosts: iomvlpptest01.ipa.sps.local
   become: true 
-- name: install packages
-  yum:
-    name: nano
-    state: present
-    update_cache: true
+  tasks:
+    - name: install packages
+      yum:
+        name: nano
+        state: present
+        update_cache: true
