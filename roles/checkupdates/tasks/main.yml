@@ -1,7 +1,4 @@
 ---
-- debug: var=proxy_env
-  when: debug_enabled_default | bool
-
 - name: yum check | Check for updates
   yum:
     list: updates
