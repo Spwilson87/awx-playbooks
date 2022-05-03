@@ -1,0 +1,8 @@
+---
+- hosts: iomvlpptest01.ipa.sps.local
+  become: true 
+  roles:
+  #  - nanoinstall
+  #  - nginxinstall
+  #  - phpinstall
+  - checkupdates
