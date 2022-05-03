@@ -1,7 +1,7 @@
 ---
 - name: install prerequisites
   yum:
-    name: yum-utils
+    name: "{{ prerequisites }}"
     state: latest
     update_cache: true
 
@@ -27,7 +27,7 @@
 
 - name: switch to mainline nginx packages
   shell: yum-config-manager --enable nginx-mainline
-  
+
 - name: install nginx
   yum:
     name: nginx
