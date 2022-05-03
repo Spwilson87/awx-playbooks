@@ -1,0 +1,9 @@
+---
+prerequisites:
+- epel-release
+- yum-utils
+- https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
+phpPackages:
+- php
+- php-{cli,fpm,mysqlnd,zip,devel,gd,mbstring,curl,xml,pear,bcmath,json,opcache,redis,memcache}
