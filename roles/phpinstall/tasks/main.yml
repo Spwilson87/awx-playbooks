@@ -13,6 +13,6 @@
 
 - name: install php
   yum:
-  name: "{{ phpPackages }}"
-  state: latest
-  ypdate_cache: true
+    name: "{{ phpPackages }}"
+    state: latest
+    update_cache: true
