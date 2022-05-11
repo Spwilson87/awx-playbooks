@@ -1,0 +1,7 @@
+
+---
+- hosts: iomvlpptest01.ipa.sps.local
+  become: true 
+  roles:
+    - checkupdates
+    - nginxinstall
