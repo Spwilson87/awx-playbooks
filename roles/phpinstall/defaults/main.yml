@@ -1,0 +1,23 @@
+---
+prerequisites:
+- epel-release
+- yum-utils
+- https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
+phpPackages:
+- php
+- php-cli
+- php-fpm
+- php-mysqlnd
+- php-zip
+- php-devel
+- php-gd
+- php-mbstring
+- php-curl
+- php-xml
+- php-pear
+- php-bcmath
+- php-json
+- php-opcache
+- php-redis
+- php-memcache

@@ -1,0 +1,18 @@
+---
+- name: install prerequisites
+  yum:
+    name: "{{ prerequisites }}"
+    state: latest
+    update_cache: true
+
+- name: disable remi-php
+  shell: yum-config-manager --disable 'remi-php*'
+
+- name: enable remi-php81
+  shell: yum-config-manager --enable remi-php81
+
+- name: install php
+  yum:
+    name: "{{ phpPackages }}"
+    state: latest
+    update_cache: true
