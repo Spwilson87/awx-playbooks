@@ -1,17 +1,15 @@
 ---
-- name: update all packages
-  tasks:
-    - name: install all updates
-      yum:
-        name: "*"
-        update_cache: yes
-        state: latest
-    - name: list updated packages
-      shell: rpm -qa --last | grep "$(date +%a\ %d\ %b\ %Y)" |cut -f 1 -d " "
-      register: upresult
-      args:
-        warn: no
-    - name: packages updated
-      debug: msg="{{ upresult.stdout_lines }}"
+- name: install all updates
+  yum:
+    name: "*"
+    update_cache: yes
+    state: latest
+- name: list updated packages
+  shell: rpm -qa --last | grep "$(date +%a\ %d\ %b\ %Y)" |cut -f 1 -d " "
+  register: upresult
+  args:
+    warn: no
+- name: packages updated
+  debug: msg="{{ upresult.stdout_lines }}"
       
     

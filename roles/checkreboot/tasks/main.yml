@@ -1,34 +1,32 @@
 ---
-- name: check for a reboot
-  tasks:
-    - name: check if reboot is required
-      shell: needs-restarting -r
-      failed_when: false
-      register: reboot_required
-      changed_when: false
-    - name: display result
-      debug:
-        var: reboot_required.rc   
-    - when: reboot_required.rc == 0
-      block:
-      - name: "end play if no reboor required"
-        debug:
-          msg: "no reboot required, ending play"
+- name: check if reboot is required
+  shell: needs-restarting -r
+  failed_when: false
+  register: reboot_required
+  changed_when: false
+- name: display result
+  debug:
+    var: reboot_required.rc   
+- when: reboot_required.rc == 0
+  block:
+  - name: "end play if no reboor required"
+    debug:
+      msg: "no reboot required, ending play"
 
-      - meta: end_play
-    - when: reboot_required.rc == 1
-      block:
-        - name: reboot the server if required
-          shell: sleep 3; reboot
-          ignore_errors: true
-          changed_when: false
-          async: 1
-          poll: 0
-        - name: wait for server to come back after reboot
-          wait_for_connection:
-            timeout: 600
-            delay: 20
-          register: reboot_result
-        - name: reboot time
-          debug:
-            msg: "The system rebooted in {{ reboot_result.elapsed }} seconds."
+  - meta: end_play
+- when: reboot_required.rc == 1
+  block:
+    - name: reboot the server if required
+      shell: sleep 3; reboot
+      ignore_errors: true
+      changed_when: false
+      async: 1
+      poll: 0
+    - name: wait for server to come back after reboot
+      wait_for_connection:
+        timeout: 600
+        delay: 20
+      register: reboot_result
+    - name: reboot time
+      debug:
+        msg: "The system rebooted in {{ reboot_result.elapsed }} seconds."
