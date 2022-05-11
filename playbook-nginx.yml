@@ -4,4 +4,4 @@
   become: true 
   roles:
     - checkupdates
-    - nginx
+    - nginxinstall
