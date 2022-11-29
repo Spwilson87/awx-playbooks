@@ -2,6 +2,6 @@
 - name: check for updates (yum)
   yum: list=updates update_cache=true
   register: yumoutput
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  when: ansible_distribution == 'AlmaLinux' or ansible_distribution == 'Red Hat Enterprise Linux'
 - debug:
     msg: "{{ yumoutput.results | map(attribute='name') | list }}"
