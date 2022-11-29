@@ -1,5 +1,5 @@
 ---
-- hosts: iomvlpptest01.ipa.sps.local
+- hosts: all
   become: true 
   roles:
     - checkupdates
